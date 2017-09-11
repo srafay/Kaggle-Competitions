@@ -25,41 +25,11 @@ X[:, 1] = labelencoder_X.fit_transform(X[:, 1])
 onehotencoder = OneHotEncoder(categorical_features = [1])
 X = onehotencoder.fit_transform(X).toarray()
 
-#Moving the columns to appropriate positions
-X[:, 0], X[:, 1] = X[:, 1], X[:, 0].copy()
-
-# Splitting the dataset into the Training set and Test set
-from sklearn.cross_validation import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-
-
-# Kernel SVM
-from sklearn.svm import SVC
-classifier = SVC(kernel = 'rbf')
-classifier.fit(X, y)
-
-# Fitting Random Forest Classification to the Training set
-from sklearn.ensemble import RandomForestClassifier
-classifier = RandomForestClassifier(n_estimators = 10, criterion = 'entropy')
-classifier.fit(X, y)
-
-# Fitting Decision Tree Classification to the Training set
-from sklearn.tree import DecisionTreeClassifier
-classifier = DecisionTreeClassifier(criterion = 'entropy')
-classifier.fit(X, y)
-
 # Fitting Naive Bayes to the Training set
 from sklearn.naive_bayes import GaussianNB
 classifier = GaussianNB()
 classifier.fit(X, y)
 
-
-# Predicting the Test set results
-y_pred = classifier.predict(X_test)
-
-# Making the Confusion Matrix
-from sklearn.metrics import confusion_matrix
-cm = confusion_matrix(y_test, y_pred)
 
 
 # Building the optimal model using Backward Elimination
@@ -77,8 +47,6 @@ X_opt = X[:, [0, 2, 3, 4, 5, 6]]
 regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
 regressor_OLS.summary()
 
-X_new = X_opt[:, [1,2,3,4,5]]
-X_new[:, 0], X_new[:, 1] = X_new[:, 1], X_new[:, 0].copy()
 
 
 testset = pd.read_csv('test.csv')
