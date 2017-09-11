@@ -25,32 +25,13 @@ onehotencoder = OneHotEncoder(categorical_features = [1])
 X = onehotencoder.fit_transform(X).toarray()
 
 #Moving the columns to appropriate positions
-X[:, 2], X[:, 1] = X[:, 1], X[:, 2].copy()
+X[:, 0], X[:, 1] = X[:, 1], X[:, 0].copy()
 
-
-# Kernel SVM
-from sklearn.svm import SVC
-classifier = SVC(kernel = 'rbf')
-classifier.fit(X, y)
-
-# Fitting Random Forest Classification to the Training set
-from sklearn.ensemble import RandomForestClassifier
-classifier = RandomForestClassifier(n_estimators = 10, criterion = 'entropy')
-classifier.fit(X, y)
-
-# Fitting Decision Tree Classification to the Training set
-from sklearn.tree import DecisionTreeClassifier
-classifier = DecisionTreeClassifier(criterion = 'entropy')
-classifier.fit(X, y)
 
 # Fitting Naive Bayes to the Training set
 from sklearn.naive_bayes import GaussianNB
 classifier = GaussianNB()
 classifier.fit(X, y)
-
-
-
-
 
 
 testset = pd.read_csv('test.csv')

@@ -11,16 +11,23 @@
 	* Using Kernel SVM with default parameters
 	* Accuracy is 64.593%
 	
-1. **2.py**
+2. **2.py**
 	* Using pclass, sex, age, Sibsp, parch, and fare features from the available dataset
 	* Using 'most frequent' strategy to replace the missing data
 	* Encoding the sex column without One Hot Encoders
 	* Using Kernel SVM with default parameters
 	* Accuracy is 63.636%	
 
-1. **3.py**
+3. **3.py**
 	* Using pclass, sex, age, Sibsp, parch, and fare features from the available dataset
 	* Using 'most frequent' strategy to replace the missing data
 	* Encoding the sex column (not using HotEncoders)
 	* Using Naive Bayes with default parameters
 	* Accuracy is 75.119%
+	
+4. **4.py**
+	* Using pclass, sex, age, Sibsp, parch, and fare features from the available dataset
+	* Using 'most frequent' strategy to replace the missing data
+	* Encoding the sex column (Using OneHotEncoders)
+	* Using Naive Bayes with default parameters
+	* Accuracy is 76.076%
