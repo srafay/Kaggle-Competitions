@@ -16,41 +16,16 @@ X[:, 2:3] = imputer.transform(X[:, 2:3])
 imputer = imputer.fit(X[:, 5:6])
 X[:, 5:6] = imputer.transform(X[:, 5:6])
 
-#Encoding the sex column
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+from sklearn.preprocessing import LabelEncoder
 labelencoder_X = LabelEncoder()
 X[:, 1] = labelencoder_X.fit_transform(X[:, 1])
 
-onehotencoder = OneHotEncoder(categorical_features = [1])
-X = onehotencoder.fit_transform(X).toarray()
-
-#Moving the columns to appropriate positions
-X[:, 0], X[:, 1] = X[:, 1], X[:, 0].copy()
-
-
-# Kernel SVM
-from sklearn.svm import SVC
-classifier = SVC(kernel = 'rbf')
-classifier.fit(X, y)
-
-# Fitting Random Forest Classification to the Training set
-from sklearn.ensemble import RandomForestClassifier
-classifier = RandomForestClassifier(n_estimators = 10, criterion = 'entropy')
-classifier.fit(X, y)
-
-# Fitting Decision Tree Classification to the Training set
-from sklearn.tree import DecisionTreeClassifier
-classifier = DecisionTreeClassifier(criterion = 'entropy')
-classifier.fit(X, y)
 
 # Fitting Naive Bayes to the Training set
 from sklearn.naive_bayes import GaussianNB
 classifier = GaussianNB()
 classifier.fit(X, y)
-
-
-
-
 
 
 testset = pd.read_csv('test.csv')
@@ -66,12 +41,6 @@ Xtest[:, 5:6] = imputer.transform(Xtest[:, 5:6])
 
 labelencoder_Xtest = LabelEncoder()
 Xtest[:, 1] = labelencoder_Xtest.fit_transform(Xtest[:, 1])
-
-onehotencoder = OneHotEncoder(categorical_features = [1])
-Xtest = onehotencoder.fit_transform(Xtest).toarray()
-
-#Moving the columns to appropriate positions
-Xtest[:, 0], Xtest[:, 1] = Xtest[:, 1], Xtest[:, 0].copy()
 
 y_pred = classifier.predict(Xtest)
 
