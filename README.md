@@ -39,3 +39,9 @@
 	* Reducing the features using Backward Elimination Technique (adjusted R-squared intuition)
 	* Using Naive Bayes with default parameters
 	* Accuracy is 77.03%
+	
+6. **6.py**
+	* Using the features as suggested by Backward Elimination Technique
+	* Using the ANN Classifier
+	* 5 hidden layers, 5 N's each layer.
+	* Accuracy is 78.47%
