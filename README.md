@@ -7,3 +7,5 @@
 1. **Titanic: Machine Learning from Disaster**
 
 2. **House Prices: Advanced Regression Techniques**
+
+3. **[First GOP Debate Twitter Sentiment](https://github.com/srafay/Twitter-Sentiment-Analysis#kaggle-competition)**
